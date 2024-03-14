@@ -28,4 +28,43 @@ public class main2 {
         for (double number : numbers) {
             System.out.printf(toBinary((int) number)+"\n");
         }
-    }}
+    }
+
+
+    private static String toBinary(int number) {
+        StringBuilder binary = new StringBuilder();
+        if (number >= Short.MAX_VALUE) {
+            return "0111111111111111";
+        }
+        else if (number <= Short.MIN_VALUE) {
+            return "1000000000000000";
+        }
+         else {
+            boolean isNegative = number < 0;
+
+
+            if (isNegative) {
+                number = -number;
+            }
+
+
+            do {
+
+                binary.insert(0, number % 2);
+
+                number /= 2;
+            } while (number > 0);
+
+
+            while (binary.length() < 16) {
+            binary.insert(0, '0');
+            }
+
+
+            if (isNegative) {
+            binary = invert(binary);
+            binary = addOne(binary);
+        }
+
+        return binary.toString();
+        }}}
