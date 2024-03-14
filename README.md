@@ -67,4 +67,28 @@ public class main2 {
         }
 
         return binary.toString();
-        }}}
+        }}
+        private static StringBuilder invert(StringBuilder binary) {
+        StringBuilder inverted = new StringBuilder();
+        for (char bit : binary.toString().toCharArray()) {
+            inverted.append((bit == '0') ? '1' : '0');
+        }
+        return inverted;
+    }
+
+    private static StringBuilder addOne(StringBuilder binary) {
+        StringBuilder result = new StringBuilder();
+        boolean carry = true;
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            char bit = binary.charAt(i);
+            if (bit == '0' && carry) {
+                result.insert(0, '1');
+                carry = false;
+            } else if (bit == '1' && carry) {
+                result.insert(0, '0');
+            } else {
+                result.insert(0, bit);
+            }
+        }
+        return result;
+    }}
