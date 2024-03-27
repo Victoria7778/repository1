@@ -37,6 +37,8 @@ public class program {
         for (String value : binary) {
             System.out.println(value);
         }
+        System.out.println("Average " + calculateAverage(numbers));
+        System.out.println("Median " + calculateMedian(numbers));
 
     }
 
@@ -96,6 +98,30 @@ public class program {
             }
         }
         return result;
+    }
+
+    private static double calculateAverage(List<Integer> numbers) {
+        if (numbers.isEmpty())
+            return 0;
+
+        long sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+
+        return (double) sum / numbers.size();
+    }
+
+    private static double calculateMedian(List<Integer> numbers) {
+        if (numbers.isEmpty()) {
+            return 0;
+        }
+        int middle = numbers.size() / 2;
+        if (numbers.size() % 2 == 0) {
+            return (numbers.get(middle - 1) + numbers.get(middle)) / 2.0;
+        } else {
+            return numbers.get(middle);
+        }
     }
 
     private static int strtodec(String str) throws NumberFormatException {
