@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class program {
+public class main2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Integer> numbers = new ArrayList<>();
@@ -16,16 +16,16 @@ public class program {
                     double number = strtodec(token);
                     numbers.add((int) number);
                 } catch (NumberFormatException e) {
-                    System.err.println("Error: " + token);
+                    System.err.println("Неправильний формат числа: " + token);
                 }
             }
         }
 
-        System.out.println("Printed num:");
+        System.out.println("Введені числа:");
         for (double number : numbers) {
             System.out.printf("%.0f%n", number);
         }
-        System.out.println("Printed num:");
+        System.out.println("Введені числа:");
         for (double number : numbers) {
             System.out.printf(toBinary((int) number) + "\n");
             binary.add(toBinary((int) number));
@@ -33,7 +33,7 @@ public class program {
         }
         bubbleSort(binary);
 
-        System.out.println("Sorted bin num:");
+        System.out.println("Відсортовані числа у двійковому форматі:");
         for (String value : binary) {
             System.out.println(value);
         }
@@ -111,7 +111,7 @@ public class program {
         for (; index < str.length(); index++) {
             char c = str.charAt(index);
             if (c < '0' || c > '9') {
-                throw new NumberFormatException("Error: " + str);
+                throw new NumberFormatException("Неправильний формат числа: " + str);
             }
             int digit = c - '0';
             result = result * 10 + digit;
