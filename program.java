@@ -2,7 +2,7 @@ public class main2 { public static void main(String[] args) { Scanner scanner = 
 
         for (String token : tokens) {
             try {
-                double number = Double.parseDouble(token);
+                double number = strtodec(token);
                 numbers.add((int) number);
             } catch (NumberFormatException e) {
                 System.err.println("Неправильний формат числа: " + token);
@@ -106,4 +106,26 @@ private static void bubbleSort(List<String> array) {
     }
 
 }
+private static int strtodec(String str) throws NumberFormatException {
+        int result = 0;
+        int index = 0;
+        boolean isNegative = false;
+
+    
+        if (str.charAt(0) == '-') {
+            isNegative = true;
+            index = 1; 
+        }
+
+        for (; index < str.length(); index++) {
+            char c = str.charAt(index);
+            if (c < '0' || c > '9') {
+                throw new NumberFormatException("Неправильний формат числа: " + str);
+            }
+            int digit = c - '0';
+            result = result * 10 + digit;
+        }
+
+        return isNegative ? -result : result;
+    }
 }
